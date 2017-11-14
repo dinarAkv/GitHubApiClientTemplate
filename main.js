@@ -11,10 +11,8 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 
 
 import App from './App.jsx';
-import TaskCreator from './TaskCreator.jsx';
-import TaskEditor from './TaskEditor.jsx';
 import reducer from './reducers';
-import { indexUrl, addTaskUrl, editTaskUrl } from './constants/appUrls';
+import { indexUrl } from './constants/appUrls';
 
 
 

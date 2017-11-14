@@ -1,27 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { bindActionCreators } from 'redux';
 
-import './styles/app.css';
-import * as TaskActionCreators  from './actions/tasks';
-import { addTaskUrl, editTaskUrl } from './constants/appUrls'
+
+
 import { UserFind } from './components/UserFind/UserFind.jsx';
+import UserFindContainer from './containers/UserFindContainer.jsx';
 
 
 
-// Main component show list of all tasks in state.
-// And show widgets to edit task or add new.
-const App = ({ tasks, taskActions }) => {
-
-  let headerNameCol = "Header";
-  let descriptionNameCol = "Description";
+const App = (props) => {
 
 
   return(
     <div>
 
-      <UserFind />
+      <UserFindContainer />
 
 
     </div>
@@ -32,23 +24,4 @@ const App = ({ tasks, taskActions }) => {
 
 
 
-const mapStateToProps = ({tasks})  => {
-
-
-    return {
-      // Get all tasks.
-      tasks: tasks,
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) =>
-{
-  return {
-    taskActions: bindActionCreators(TaskActionCreators, dispatch),
-  }
-
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

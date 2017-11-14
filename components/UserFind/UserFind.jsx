@@ -1,5 +1,5 @@
 import React from 'react';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 
 import { User } from '../User/User.jsx';
 
@@ -7,32 +7,52 @@ import { User } from '../User/User.jsx';
 /**
 * Styles.
 */
-import { usersBlockStyle } from './UserFind.css';
+import { searchButtonStyle, usersBlockStyle, userItemStyle } from './UserFind.css';
 
 
-export const UserFind = props => {
 
-  function ff(){
-    console.log('Query string', queryString.stringify({name: 'Petya', age: 15,})); //
+
+const searchButtonName = 'search';
+
+
+
+export const UserFind = ({ users, userActions, searchName }) => {
+
+
+  const searchUserOnClick = (event) => {
+
+    console.log('Typed', searchName.value);
+
+    userActions.getUsers(searchName.value);
   }
 
-  ff();
+
+
+
 
 
   return(
     <div>
 
-      <input type="text" placeholder='Search user name' />
+      <input type="text" ref={(input) => { searchName = input }} placeholder='Search user name' />
+      <button className={searchButtonStyle} onClick={searchUserOnClick}>{searchButtonName}</button>
       <div className={usersBlockStyle}>
-          <User
-            userAvatarUrl='https://avatars3.githubusercontent.com/u/59207?v=4'
-            userName='Tom'
-          />
+          {users[0] ? users[0].map((user, index, arr) => {
+
+            return (
+                      <div key={user.id.toString()} className={userItemStyle}>
+                        <User
+                          userAvatarUrl={user.avatarUrl}
+                          userName={user.login}
+                          key={user.id.toString()}
+                        />
+                      </div>
+                  )
+          }
+
+          ) : null}
+
       </div>
-
-
-
-
     </div>
   );
 }
