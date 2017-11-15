@@ -5,6 +5,11 @@ import { User } from '../User/User.jsx';
 
 
 /**
+* High order components.
+*/
+import Menu from '../Menu/Menu.jsx';
+
+/**
 * Styles.
 */
 import { searchButtonStyle, usersBlockStyle, userItemStyle } from './UserFind.css';
@@ -37,6 +42,7 @@ class UserFind extends React.Component {
   render(){
     return(
       <div>
+        <Menu />  
 
         <input type="text" ref={(input) => { this.searchName = input }} placeholder='Search user name' />
         <button className={searchButtonStyle} onClick={this.searchUserOnClick}>{searchButtonName}</button>

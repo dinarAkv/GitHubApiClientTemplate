@@ -10,9 +10,11 @@ import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 
 
 
-import App from './App.jsx';
+
+import UserFindContainer from './containers/UserFindContainer.jsx';
+import { About } from './components/About/About.jsx';
 import reducer from './reducers';
-import { indexUrl } from './constants/appUrls';
+import { indexUrl, aboutUrl } from './constants/appUrls';
 
 
 
@@ -28,12 +30,11 @@ const history = syncHistoryWithStore(hashHistory, store);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path={indexUrl} component={App}/>
+      <Route path={indexUrl} component={UserFindContainer} />
+      <Route path={aboutUrl} component={About} />
     </Router>
   </Provider>,
   document.getElementById('app'));
 
 
 export default store;
-
-/* component={TaskEditor} */
