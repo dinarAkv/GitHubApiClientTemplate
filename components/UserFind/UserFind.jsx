@@ -16,43 +16,52 @@ const searchButtonName = 'search';
 
 
 
-export const UserFind = ({ users, userActions, searchName }) => {
 
+class UserFind extends React.Component {
 
-  const searchUserOnClick = (event) => {
+  constructor(props){
+    super(props);
 
-    console.log('Typed', searchName.value);
+    this.searchUserOnClick = this.searchUserOnClick.bind(this);
+  }
 
-    userActions.getUsers(searchName.value);
+  searchUserOnClick(event){
+
+    console.log('Typed', this.searchName.value);
+
+    this.props.userActions.getUsers(this.searchName.value);
   }
 
 
 
+  render(){
+    return(
+      <div>
 
+        <input type="text" ref={(input) => { this.searchName = input }} placeholder='Search user name' />
+        <button className={searchButtonStyle} onClick={this.searchUserOnClick}>{searchButtonName}</button>
+        <div className={usersBlockStyle}>
+            {this.props.users[0] ? this.props.users[0].map((user, index, arr) => {
 
+              return (
+                        <div key={user.id.toString()} className={userItemStyle}>
+                          <User
+                            userAvatarUrl={user.avatarUrl}
+                            userName={user.login}
+                            key={user.id.toString()}
+                          />
+                        </div>
+                    )
+            }
 
-  return(
-    <div>
+            ) : null}
 
-      <input type="text" ref={(input) => { searchName = input }} placeholder='Search user name' />
-      <button className={searchButtonStyle} onClick={searchUserOnClick}>{searchButtonName}</button>
-      <div className={usersBlockStyle}>
-          {users[0] ? users[0].map((user, index, arr) => {
-
-            return (
-                      <div key={user.id.toString()} className={userItemStyle}>
-                        <User
-                          userAvatarUrl={user.avatarUrl}
-                          userName={user.login}
-                          key={user.id.toString()}
-                        />
-                      </div>
-                  )
-          }
-
-          ) : null}
-
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 }
+
+
+export default UserFind;

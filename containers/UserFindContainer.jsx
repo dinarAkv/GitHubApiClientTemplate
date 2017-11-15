@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { UserFind } from '../components/UserFind/UserFind.jsx';
+import UserFind from '../components/UserFind/UserFind.jsx';
 import * as UserActionCreators  from '../actions/users';
 
 
