@@ -50,23 +50,27 @@ export const getUsers = (searchUserName) => {
 
   return (dispatch, getState) => {
 
+
+
     if (searchUserName) {
-      fetch(fetchUrl)
-        .then((response) => {
-            if (response.status === REQUEST_FORBIDDEN ) {
-              alert('Too much requests. Try to make request later.');
-            }
-            else {
-              return response.json();
-            }
+      return fetch(fetchUrl)
+                .then((response) => {
 
-        }).then((json) => {
-          const userList = formUserList(json);
+                    if (response.status === REQUEST_FORBIDDEN ) {
+                      alert('Too much requests. Try to make request later.');
+                    }
+                    else {
+                      return response.json();
+                    }
 
-          console.log('userList', userList);
+                }).then((json) => {
+                  const userList = formUserList(json);
 
-          dispatch(receiveUsers(userList));
-        })
+                  console.log('userList', userList);
+
+                   dispatch(receiveUsers(userList));
+
+                })
     }
 
 
