@@ -1,9 +1,9 @@
 # GitHubApiClientTemplate
 Simple hello world gitHub api template using React-Redux.
 
-# Quick start application:
+## Quick start application:
 npm install
 npm start
 
-# To run tests: 
+## To run tests: 
 npm test
