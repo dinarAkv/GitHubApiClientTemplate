@@ -12,13 +12,13 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 
-describe('Test getUsers action', () => {
+describe('Test actions', () => {
   afterEach(() => {
     fetchMock.reset()
     fetchMock.restore()
   })
 
-  it('creates users when fetch users have done.', () => {
+  it('Test getUsers action.', () => {
 
     // Mock acquired from rest.
     const payload = { login: 'petya', avatar_url: 'https://github/url', id: 1 };
